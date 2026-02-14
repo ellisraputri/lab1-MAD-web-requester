@@ -1,11 +1,20 @@
 import { Image } from 'expo-image';
-import { Platform, View, StyleSheet, Button } from 'react-native';
+import { useState } from 'react';
+import { Platform, View, StyleSheet, Button, TextInput } from 'react-native';
 
 
 export default function HomeScreen() {
+  const [text, onChangeText] = useState("Enter URL");
+  
   return (
     <View style={styles.containerColumn}>
       <View style={styles.containerRow}>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+        />
+
         <Button 
           title = "Click me"
           onPress={() => alert("stop pressing my button!")}
@@ -24,5 +33,9 @@ const styles = StyleSheet.create({
   containerRow: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  input: {
+    justifyContent: "center",
+    backgroundColor: "white",
   }
 });
